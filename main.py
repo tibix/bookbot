@@ -1,6 +1,4 @@
-def count_words(text):
-    words = text.split()
-    return len(words)
+from stats import count_words
 
 
 def count_letters(text):
