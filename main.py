@@ -1,3 +1,4 @@
+import sys
 from stats import count_words
 
 
@@ -26,7 +27,12 @@ def chars_dict_to_sorted_list(chars_dict):
 
 
 def main():
-    book = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        book = sys.argv[1]
+
     with open(book) as f:
         file_contents = f.read()
     print(f"--- Begin report of {book} ---")
@@ -38,7 +44,7 @@ def main():
     for item in chars_sorted_list:
         if not item["char"].isalpha():
             continue
-        print(f"The '{item['char']}' character was found {item['num']} times")
+        print(f"- '{item['char']}: {item['num']}'")
 
     print("--- End report ---")
 
